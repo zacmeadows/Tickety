@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tickety</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+
+
+<body>
+    <nav>
+    <%= link_to "Home", root_path %>
+    |
+    <%= link_to "New Ticket", new_ticket_path %>
+    |
+    <% if user_signed_in? %>
+      Hello <%= current_user.first_name %>,
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path %>
+    <% end %>
+
+    </nav>
+
+  <%= flash[:notice] || flash[:alert] %>
+  <br>
+  <%= yield %>
+
+</body>
+</html>
