@@ -4,7 +4,7 @@
 <% @ticket.each do |ticket| %>
   <p>Title: <%= ticket.title %></p>
   <p>body: <%= ticket.body %></p>
-  <p>Author: <%= ticket.author %></p>
+  <p>Author: <%= ticket.user_first_name %></p>
   <p><%= link_to "Edit", edit_ticket_path(ticket) %></p>
   <p><%= link_to "Delete", ticket_path(ticket), method: :delete, data: {confirm: "Are you sure?"} %></p>
   <hr>

@@ -12,6 +12,7 @@ class TicketsController < ApplicationController
 
   def create 
     @ticket = Ticket.new ticket_params
+    @ticket.user = current_user
     if @ticket.save
       redirect_to root_path 
     else 
@@ -42,7 +43,7 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:title, :body, :author)
+    params.require(:ticket).permit(:title, :body, :author, :user_id)
   end 
 
 end
